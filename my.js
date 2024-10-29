@@ -142,7 +142,7 @@ function playGame() {
             Hooray!!! You win the GAME`)
         }
         else {
-            console.log(`My score is 5 and you scored ${humanScore}. You lost the GAME.
+            console.log(`Computer score is 5 and you scored ${humanScore}. You lost the GAME.
             Better luck next time!
             Refresh the page to play Again`)
         }
