@@ -9,9 +9,9 @@ let rock;
 let paper;
 let scissor;
 
-function getComputerChoice(choice) {
+function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 100);
-
+    let choice;
     if (randomNumber < 33) {
         choice = "ROCK";
 
@@ -20,12 +20,14 @@ function getComputerChoice(choice) {
     }
     else {
         choice = "SCISSOR";
-    } ;
+    };
 
-   return console.log(choice) ;
-} ;
+    return choice;
+};
 
-getComputerChoice() ;
+getComputerChoice();
+
+console.log(getComputerChoice());
 
 //     2. multiplying random number by 100 converting it into 1 to hundred floting numer
 //     3. converting floting number to a nearst integer
@@ -34,8 +36,51 @@ getComputerChoice() ;
 //     5. if number is between 33 to 66 then itll denote paper 
 //     6. if number is between 66 to 100 then itll denote scissor
 // 2. User will give one option among these three and itll be stored in a variable.
-let getHumanChoice = prompt("Write your choice between rock , paper , scissor" , "");
-console.log(getHumanChoice) ;
+
+let getHumanChoice = prompt("Write your choice between rock , paper , scissor", "");
+let gett = getHumanChoice.toUpperCase();
+console.log(gett);
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+    String(humanChoice);
+    // humanChoice.toUppeCase();
+
+    if (computerChoice === humanChoice) {
+        return console.log("Game tied. Lets play again.");
+
+    };
+    if (computerChoice === "ROCK" && humanChoice === "PAPER") {
+        return console.log(`Congrats! You win. ${humanChoice} beats ${computerChoice}`);
+    };
+
+    if (computerChoice === "ROCK" && humanChoice === "SCISSOR") {
+        return console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+    };
+    if (computerChoice === "SCISSOR" && humanChoice === "ROCK") {
+        return console.log(`Congrats! You win. ${humanChoice} beats ${computerChoice}`);
+    };
+    if (computerChoice === "SCISSOR" && humanChoice === "PAPER") {
+        return console.log(`Congrats! You win. ${humanChoice} beats ${computerChoice}`);
+    };
+    if (computerChoice === "PAPER" && humanChoice === "ROCK") {
+        return console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+    };
+    if (computerChoice === "PAPER" && humanChoice === "SCISSOR") {
+        return console.log(`Congrats! You win. ${humanChoice} beats ${computerChoice}`);
+    };
+    if (computerChoice !== humanChoice){
+    console.log(`You entered a wrong word. Please check your spelling and try again.`) ;
+    };
+    
+}
+
+const humanSelection = gett;
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
 
 
 // 3. Comparing
