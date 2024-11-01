@@ -55,18 +55,6 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice) {
 
-    if (gameScore === 5) {
-        if (humanScore === 5) {
-            console.log(`Your score is 5 and computer scored only ${computerScore}. 
-        Hooray!!! You win the GAME`)
-        }
-        else {
-            console.log(`Computer score is 5 and you scored ${humanScore}. You lost the GAME.
-        Better luck next time!
-        Refresh the page to play Again`)
-        }
-    }
-
     if (computerChoice === humanChoice) {
         console.log(`Your chose ${humanChoice}`);
         console.log(`Computer chose ${computerChoice}`);
@@ -79,7 +67,7 @@ function playRound(humanChoice, computerChoice) {
         console.log(`Computer chose ${computerChoice}`);
         console.log(`Congrats! You win. ${humanChoice} beats ${computerChoice}`);
         console.log(`Now your score is ${humanScore} and computer score is ${computerScore}
-            `)
+            `);
     }
     else if (computerChoice === `ROCK` && humanChoice === `SCISSOR`) {
         computerScore++;
@@ -115,8 +103,8 @@ function playRound(humanChoice, computerChoice) {
         console.log(`Congrats! You win. ${humanChoice} beats ${computerChoice}`)
         console.log(`Now your score is ${humanScore} and computer score is ${computerScore}
             `);
-    }
 
+    }
     else if (computerChoice === `SCISSOR` && humanChoice === `PAPER`) {
         computerScore++;
         console.log(`Your chose ${humanChoice}`);
@@ -142,7 +130,9 @@ function playRound(humanChoice, computerChoice) {
 let gameScore;
 
 function playGame() {
+
     gameScore = Math.max(humanScore, computerScore);
+
     if (gameScore === 5) {
         if (humanScore === 5) {
             console.log(`Your score is 5 and computer scored only ${computerScore}. 
@@ -160,10 +150,9 @@ function playGame() {
         playRound(humanSelection, computerSelection);
         playGame();
     }
-
 };
 
-playGame();
+playGame() ;
 
 // playGame();
 
