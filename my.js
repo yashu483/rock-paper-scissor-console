@@ -114,7 +114,7 @@ function playRound(humanChoice, computerChoice) {
             `);
 
     }
-    else {
+    else if (humanChoice !== undefined) {
         computerScore++;
         console.log(`Your entered ${humanChoice}`);
         console.log(`Computer chose ${computerChoice}`);
@@ -133,8 +133,8 @@ function playGame() {
 
     gameScore = Math.max(humanScore, computerScore);
 
-    if (gameScore === 5) {
-        if (humanScore === 5) {
+    if (gameScore === 5 || gameScore > 5) {
+        if (humanScore === 5 || humanScore > 5) {
             console.log(`Your score is 5 and computer scored only ${computerScore}. 
             Hooray!!! You win the GAME`)
         }
