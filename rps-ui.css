@@ -7,6 +7,7 @@ body {
 body {
     display: flex;
     flex-direction: row;
+    background-color: black;
 }
 
 .game-section {
@@ -15,14 +16,16 @@ body {
     align-items: stretch;
     justify-content: center;
     width: 100%;
+    border: 5px solid gold;
 }
 
 .heading {
     background-color: black;
     color: white;
     text-align: center;
-    border: 5px solid gold;
     margin-bottom: auto;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(-90deg, transparent, gold, gold, gold, gold, gold, gold, gold, transparent)1;
 }
 
 .game-name-heading {
@@ -38,6 +41,7 @@ body {
     font-weight: 200;
     font-size: 20px;
     margin-top: none;
+    margin-bottom: 60px;
 }
 
 #container {
@@ -45,7 +49,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
-    border: 5px solid gold;
     border-top: none;
     background-color: black;
 }
@@ -62,6 +65,11 @@ body {
 
 }
 
+.computer-section {
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(-90deg, transparent, gold, gold, gold, gold, gold, gold, gold, transparent)1;
+}
+
 .player-logo,
 .computer-logo {
     display: flex;
@@ -69,7 +77,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-left: 70px;
-    border: 8px solid green;
+    border: 8px solid rgb(12, 206, 12);
+    border-radius: 5px;
 
 }
 
@@ -95,11 +104,11 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex: 1.15 1 0;
-    border: 5px solid gold;
+    flex: 1.10 1 0;
     border-left: none;
     border-right: none;
-
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(-90deg, transparent, gold, gold, gold, gold, gold, gold, gold, transparent)1;
 }
 
 #vs-icon {
@@ -124,11 +133,13 @@ body {
 }
 
 #round-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     margin-left: auto;
     margin-right: 60px;
 }
-
-.info {}
 
 .button-info,
 .start {
@@ -139,7 +150,7 @@ body {
     margin: 25px;
     width: 250px;
     height: max-content;
-    border: 2px solid green;
+    border: 2px solid rgb(12, 206, 12);
     border-radius: 10%;
     background-color: black;
 }
@@ -162,13 +173,137 @@ body {
     margin-right: 50px;
     border: 4px solid gold;
     border-radius: 10%;
+    flex: 1 1 auto;
 }
 
 
 
 .game-history {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 600px;
-    border: 5px solid red;
+    border: 5px solid gold;
+    border-left: none;
     margin-left: auto;
     flex: 1 1 auto;
+    padding: 30px 0 0 0;
+
+}
+
+#history-section {
+    display: flex;
+    flex-direction: column;
+    margin-top: none;
+    width: 100%;
+    align-items: center;
+    height: 100%;
+}
+
+#scorecard-section {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    width: 100%;
+    height: 35%;
+    padding-bottom: none;
+    align-items: center;
+    border-top: 5px solid transparent;
+    border-image: linear-gradient(90deg, transparent, gold, transparent)1;
+}
+
+.history-name,
+.scorecard-name {
+    color: white;
+    font-family: "Sour Gummy", "Balthazar", "Serif";
+    margin: 8px;
+    font-size: 45px;
+    font-weight: 500;
+}
+
+.player-score,
+.computer-score {
+    color: white;
+    font-family: "Sour Gummy", "Balthazar", "Serif";
+    font-weight: 400;
+    font-size: 38px;
+    flex: 1 1 0;
+    text-align: center;
+}
+
+.player-score {
+    border-right: 3px solid transparent;
+    border-image: linear-gradient(to bottom, grey, grey, grey, transparent)1;
+}
+
+.score {
+    display: flex;
+    flex-direction: row;
+    padding: 0 5px 5px 5px;
+    width: 100%;
+    height: 100%;
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(90deg, transparent, grey, grey, grey, transparent)1;
+}
+
+/* Code at the bottom is for the numbers which shows current score. */
+.actual-score-p,
+.actual-score-c {
+    color: white;
+    font-family: "Sour Gummy", "Balthazar", "Serif";
+    font-size: 38px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.player-score-name,
+.computer-score-name {
+    margin: 10px auto;
+}
+
+.history-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 580px;
+    padding-bottom: 30px;
+    font-family: "Sour Gummy", "Balthazar", serif;
+    font-size: 20px;
+    color: white;
+    font-weight: 200;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.para {
+    margin: 5px;
+    text-align: center;
+}
+
+.max-points {
+    font-size: 16px;
+    margin: 0;
+}
+
+.div-points {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    font-family: "Sour Gummy", "Balthazar", serif;
+    height:max-content ;
+    border: 2px solid rgb(12, 206, 12);
+    border-radius: 10%;
+    width: 250px;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+}
+
+#points {
+    font-size: 20px;
+    margin: 0;
 }

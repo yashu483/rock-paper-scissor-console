@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dropdown {
+            position: relative;
+        }
+
+        #options {
+            margin-top: 5px;
+            /* Space between button and dropdown */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dropdown">
+        <button id="dropdownButton">Select an Option</button>
+        <select id="options" style="display: none;">
+            <option value="">--Choose an option--</option>
+            <option value="Option 1">Optiodfn 1</option>
+            <option value="Option 2">Option fdf2</option>
+            <option value="Option 3">Optiondf 3</option>
+        </select>
+    </div>
+    <select name="" id=""></select>
+    <p id="selectedValue"></p>
+</body>
+<script>
+    const button = document.getElementById('dropdownButton');
+    const select = document.getElementById('options');
+    const selectedValueDisplay = document.getElementById('selectedValue');
+
+    button.addEventListener('click', () => {
+        // Toggle the display of the select element
+        if (select.style.display === 'none') {
+            select.style.display = 'block';
+        } else {
+            select.style.display = 'none';
+        }
+    });
+
+    // Capture the selection
+    select.addEventListener('change', () => {
+        const selectedValue = select.value;
+        selectedValueDisplay.textContent = `You selected: ${selectedValue}`;
+        // Hide the dropdown after selection
+        select.style.display = 'none';
+    });
+</script>
+
+</html>

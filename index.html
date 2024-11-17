@@ -37,7 +37,19 @@
                 <div id="vs-icon">VS</div>
                 <div id="current-round">
                     <div id="round-content">
-                        <a class="info" href="./README.md"><button class="button-info">info!</button></a>
+                        <div class="div-points">
+                            <br class="max-points">Select Max Points <br>
+                            <select name="points" id="points">
+                                <option value="five">5 points</option>
+                                <option value="ten">10 points</option>
+                                <option value="fifteen">15 points</option>
+                                <option value="twenty-five">25 points</option>
+                            </select>
+                        </div>
+                        <a class="info"
+                            href="https://github.com/yashu483/rock-paper-scissor-console/blob/rps-ui/README.md#rock-paper-scissor-1">
+                            <button class="button-info">info!</button>
+                        </a>
                         <button class="start">START</button>
                     </div>
                 </div>
@@ -59,22 +71,23 @@
 
     <div class="game-history">
         <div id="history-section">
-            <h1>Game History</h1>
+            <h1 class="history-name">Game History</h1>
             <div class="history-chart">
-
+                <p class="para">The game hasn't begin yet!
+                </p>
             </div>
         </div>
 
         <div id="scorecard-section">
-            <h1>ScoreCard</h1>
+            <h1 class="scorecard-name">ScoreCard</h1>
             <div class="score">
                 <div class="player-score">
-                    <p>PLAYER</p>
-                    <div></div>
+                    <p class="player-score-name">PLAYER</p>
+                    <div class="actual-score-p">00</div>
                 </div>
                 <div class="computer-score">
-                    <p>COMPUTER</p>
-                    <div></div>
+                    <p class="computer-score-name">COMPUTER</p>
+                    <div class="actual-score-c">00</div>
                 </div>
             </div>
         </div>
