@@ -152,7 +152,7 @@ function playGame() {
     }
 };
 
-playGame() ;
+playGame();
 
 // playGame();
 

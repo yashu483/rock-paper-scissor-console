@@ -1,4 +1,6 @@
-# rock-paper-scissor
+# Rock Paper Scissor
+==Ok what about this==
+<h1>Rock Paper Scissor</h1>
 Simple JS project r-p-s
 Project Name -- rock paper scissor console only
 
