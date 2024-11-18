@@ -1,13 +1,22 @@
 "use strict";
 
-console.log(`Lets play ROCK-PAPER-SCISSOR
-    `);
-
-
 let computerSelection;
 let humanSelection;
 let computerScore = 0;
 let humanScore = 0;
+let maxPoints = 0;
+let gameScore = 0;
+
+
+const para1 = document.createElement("p");
+const para2 = document.createElement("p");
+const para3 = document.createElement("p");
+const para4 = document.createElement("p");
+
+para1.classList.toggle("temp-para");
+para2.classList.toggle("temp-para");
+para3.classList.toggle("temp-para-l");
+para4.classList.toggle("temp-para");
 
 function getComputerChoice() {
 
@@ -26,138 +35,226 @@ function getComputerChoice() {
 };
 
 function getHumanChoice() {
-    let selection = prompt(`Write your choice between rock , paper , scissor `, "");
-    if (typeof selection === 'string') {
-        humanSelection = selection.toUpperCase();
-        return humanSelection;
-    }
-    else {
-        let theEnd = prompt(`Do you want to quit the game?
-            Tap enter for YES.
-            Click Cancel for NO.`);
-        if (theEnd === '') {
-            computerScore = 5;
-            return console.log(`You quit the GAME.
-                Computer WON.`);
-        }
-        else {
-            playGame();
-        }
+    let target = event.target;
+    switch (target.id) {
+        case "one": return "ROCK";
+            break;
+        case "two": return 'PAPER';
+            break
+        case "three": return "SCISSOR";
     };
-}
 
-
-
-
-// console.log(humanSelection)
-
-// completion of input stage
-
-function playRound(humanChoice, computerChoice) {
-
-    if (computerChoice === humanChoice) {
-        console.log(`Your chose ${humanChoice}`);
-        console.log(`Computer chose ${computerChoice}`);
-        console.log(`Game tied. Play Again 
-            `);
-    }
-    else if (computerChoice === "ROCK" && humanChoice === "PAPER") {
-        humanScore++;
-        console.log(`Your chose ${humanChoice}`);
-        console.log(`Computer chose ${computerChoice}`);
-        console.log(`Congrats! You win. ${humanChoice} beats ${computerChoice}`);
-        console.log(`Now your score is ${humanScore} and computer score is ${computerScore}
-            `);
-    }
-    else if (computerChoice === `ROCK` && humanChoice === `SCISSOR`) {
-        computerScore++;
-        console.log(`Your chose ${humanChoice}`);
-        console.log(`Computer chose ${computerChoice}`);
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-        console.log(`Now your score is ${humanScore} and computer score is ${computerScore}
-            `);
-
-    }
-    else if (computerChoice === `PAPER` && humanChoice === `ROCK`) {
-        computerScore++;
-        console.log(`Your chose ${humanChoice}`);
-        console.log(`Computer chose ${computerChoice}`);
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-        console.log(`Now your score is ${humanScore} and computer score is ${computerScore}
-            `);
-
-    }
-    else if (computerChoice === `PAPER` && humanChoice === `SCISSOR`) {
-        humanScore++;
-        console.log(`Your chose ${humanChoice}`);
-        console.log(`Computer chose ${computerChoice}`);
-        console.log(`Congrats! You win. ${humanChoice} beats ${computerChoice}`)
-        console.log(`Now your score is ${humanScore} and computer score is ${computerScore}
-            `);
-
-    }
-    else if (computerChoice === `SCISSOR` && humanChoice === `ROCK`) {
-        humanScore++;
-        console.log(`Your chose ${humanChoice}`);
-        console.log(`Computer chose ${computerChoice}`);
-        console.log(`Congrats! You win. ${humanChoice} beats ${computerChoice}`)
-        console.log(`Now your score is ${humanScore} and computer score is ${computerScore}
-            `);
-
-    }
-    else if (computerChoice === `SCISSOR` && humanChoice === `PAPER`) {
-        computerScore++;
-        console.log(`Your chose ${humanChoice}`);
-        console.log(`Computer chose ${computerChoice}`);
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-        console.log(`Now your score is ${humanScore} and computer score is ${computerScore}
-            `);
-
-    }
-    else if (humanChoice !== undefined) {
-        computerScore++;
-        console.log(`Your entered ${humanChoice}`);
-        console.log(`Computer chose ${computerChoice}`);
-        console.log(`You entered a wrong word. Please check your spelling and try again. Typing wrong word gives 1 points to opponent.`);
-        console.log(`Now your score is ${humanScore} and computer score is ${computerScore}
-            `);
-    }
-
+    // if (event.type === "keypress") {
+    //     switch (target.code) {
+    //         case "KeyR": return humanSelection = "ROCK";
+    //             break;
+    //         case "KeyP": return humanSelection = "PAPER";
+    //             break;
+    //         case "KeyS": return humanSelection = "SCISSOR";
+    //         default: return;
+    //     };
+    // };
 };
 
-// playRound (humanSelection , computerSelection) ;
+function getHumanChoiceByKey() {
+    let keyPressed = event.code;
 
-let gameScore;
+    switch (keyPressed) {
+        case "KeyR": return "ROCK";
+            break;
+        case "KeyP": return "PAPER";
+            break;
+        case "KeyS": return "SCISSOR";
+    }
+}
 
 function playGame() {
 
     gameScore = Math.max(humanScore, computerScore);
 
-    if (gameScore === 5 || gameScore > 5) {
-        if (humanScore === 5 || humanScore > 5) {
-            console.log(`Your score is 5 and computer scored only ${computerScore}. 
-            Hooray!!! You win the GAME`)
+    if (gameScore === maxPoints || gameScore > maxPoints) {
+        if (humanScore === maxPoints || humanScore > maxPoints) {
+            para1.textContent = `Game Over!`;
+            para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
+            para3.textContent = `You Won the Game.`;
+            para4.textContent = `Click the RESTART button to play again.`
         }
         else {
-            console.log(`Computer score is 5 and you scored ${humanScore}. You lost the GAME.
-            Better luck next time!
-            Refresh the page to play Again`)
+            para1.textContent = `Game Over!`;
+            para2.textContent = `Computer score is ${computerScore} and you scored ${humanScore}.`;
+            para3.textContent = `You Lost the Game.`;
+            para4.textContent = `Better luck next time! Click the RESTART button to play again.`;
         }
     }
     else {
         computerSelection = getComputerChoice();
         humanSelection = getHumanChoice();
         playRound(humanSelection, computerSelection);
-        playGame();
     }
 };
 
-playGame();
+function playGameByKey() {
+    gameScore = Math.max(humanScore, computerScore);
+
+    if (gameScore === maxPoints || gameScore > maxPoints) {
+        if (humanScore === maxPoints || humanScore > maxPoints) {
+            para1.textContent = `Game Over!`;
+            para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
+            para3.textContent = `You Won the Game.`;
+            para4.textContent = `Click the RESTART button to play again.`
+            return;
+        }
+        else {
+            para1.textContent = `Game Over!`;
+            para2.textContent = `Computer score is ${computerScore} and you scored ${humanScore}.`;
+            para3.textContent = `You Lost the Game.`;
+            para4.textContent = `Better luck next time! Click the RESTART button to play again.`;
+            return;
+        }
+    }
+    else {
+        computerSelection = getComputerChoice();
+        humanSelection = getHumanChoiceByKey();
+        playRound(humanSelection, computerSelection);
+    }
+};
+
+function playRound(humanChoice, computerChoice) {
+    newPara.remove();
+
+    if (computerChoice === humanChoice) {
+        para1.textContent = `You chose ${humanChoice}.`;
+        para2.textContent = `Computer chose ${computerChoice}`;
+        para3.textContent = `Round Tied.`;
+    }
+    else if (computerChoice === "ROCK" && humanChoice === "PAPER") {
+        humanScore++;
+
+        para1.textContent = `You chose ${humanChoice}.`;
+        para2.textContent = `Computer chose ${computerChoice}`;
+        para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
+        para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+
+    }
+    else if (computerChoice === `ROCK` && humanChoice === `SCISSOR`) {
+        computerScore++;
+        para1.textContent = `You chose ${humanChoice}.`;
+        para2.textContent = `Computer chose ${computerChoice}`;
+        para3.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
+        para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+    }
+    else if (computerChoice === `PAPER` && humanChoice === `ROCK`) {
+        computerScore++;
+        para1.textContent = `You chose ${humanChoice}.`;
+        para2.textContent = `Computer chose ${computerChoice}`;
+        para3.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
+        para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+    }
+    else if (computerChoice === `PAPER` && humanChoice === `SCISSOR`) {
+        humanScore++;
+        para1.textContent = `You chose ${humanChoice}.`;
+        para2.textContent = `Computer chose ${computerChoice}`;
+        para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
+        para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+    }
+    else if (computerChoice === `SCISSOR` && humanChoice === `ROCK`) {
+        humanScore++;
+        para1.textContent = `You chose ${humanChoice}.`;
+        para2.textContent = `Computer chose ${computerChoice}`;
+        para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
+        para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+    }
+    else if (computerChoice === `SCISSOR` && humanChoice === `PAPER`) {
+        computerScore++;
+        para1.textContent = `You chose ${humanChoice}.`;
+        para2.textContent = `Computer chose ${computerChoice}`;
+        para3.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
+        para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+    }
+    resultDiv.append(para1);
+    resultDiv.append(para2);
+    resultDiv.append(para3);
+    resultDiv.append(para4);
+
+
+};
+
+const playerName = document.querySelector("#name-player");
+
+playerName.addEventListener("click", () => {
+    let name = prompt("Type your name.", "PLAYER");
+
+    if (typeof name === "string") {
+        let tempName = name.toUpperCase();
+        playerName.textContent = tempName;
+    }
+});
+
+// - [ ]  Add event listener to start button
+
+const startButton = document.querySelector(".start");
+const selectionSection = document.querySelector("#round-content");
+const currentRound = document.querySelector("#current-round");
+const changeName = document.querySelector(".change-name");
+
+const restartButton = document.createElement("button");
+
+restartButton.innerText = "RESTART";
+restartButton.classList.toggle("restart-button");
+
+const resultDiv = document.createElement("div");
+resultDiv.classList.toggle("relative-div")
+
+const newPara = document.createElement("p");
+newPara.textContent = `To throw your choice click on icon below OR
+ press R for rock, P for paper,
+  or S for scissor .`;
+newPara.classList.toggle("new-para");
+
+
+// - [ ]  once user clicks on start button, remove selection section content
+// - [ ]  add restart button near to vs icon.
+const tempPoints = document.querySelector("#points");
+
+
+startButton.addEventListener("click", () => {
+    selectionSection.remove();
+    changeName.remove();
+    currentRound.appendChild(restartButton);
+    currentRound.appendChild(resultDiv);
+    resultDiv.appendChild(newPara);
+    maxPoints = tempPoints.value;
+});
+
+// - [ ]  show text in selection section “ click on images below or press R for rock,, P for paper, or S for scissor, to throw your choice”
+// - [ ]  create funtion for action based on image clicks
+
+const playerChoice = document.querySelector(".choice-section-p");
+
+
+playerChoice.addEventListener("click", (event) => {
+    let target = event.target;
+    playGame();
+});
+
+// - [ ]  create function for key pressed.
+// - [ ]  add event listener for image clicks
+// - [ ]  add event listener for button pressed
+
+document.addEventListener("keypress", (event) => {
+    playGameByKey();
+});
+
+
+// - [ ]  show the appropriate result  based on user and computer choice in selection section
+// - [ ]  add new round result in history section
+// - [ ]  once game points is equals to max points selected show the game over and declare winner with first to reach the max points.
+
 
 // playGame();
-
-// let button = document.querySelector('.button');
-
-// button.addEventListener('click', function (event) {
-// playGame() ;
-// })
