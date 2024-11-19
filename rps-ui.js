@@ -523,7 +523,7 @@ playerChoice.addEventListener("click", (event) => {
             if (humanScore === maxPoints || humanScore > maxPoints) {
                 para1.textContent = `Game Over!`;
                 para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
-                para3.textContent = `You Won the Game.`;
+                para3.textContent = ` Congrats! You Won the Game.`;
                 para4.textContent = `Click the RESTART button to play again.`
 
                 resultDiv.append(para1);
@@ -565,7 +565,7 @@ document.addEventListener("keypress", (event) => {
             if (humanScore === maxPoints || humanScore > maxPoints) {
                 para1.textContent = `Game Over!`;
                 para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
-                para3.textContent = `You Won the Game.`;
+                para3.textContent = `Congrats! You Won the Game.`;
                 para4.textContent = `Click the RESTART button to play again.`
 
                 resultDiv.append(para1);
