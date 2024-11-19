@@ -69,54 +69,35 @@ function getHumanChoiceByKey() {
 }
 
 function playGame() {
-
-    gameScore = Math.max(humanScore, computerScore);
-
-    if (gameScore === maxPoints || gameScore > maxPoints) {
-        if (humanScore === maxPoints || humanScore > maxPoints) {
-            para1.textContent = `Game Over!`;
-            para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
-            para3.textContent = `You Won the Game.`;
-            para4.textContent = `Click the RESTART button to play again.`
-        }
-        else {
-            para1.textContent = `Game Over!`;
-            para2.textContent = `Computer score is ${computerScore} and you scored ${humanScore}.`;
-            para3.textContent = `You Lost the Game.`;
-            para4.textContent = `Better luck next time! Click the RESTART button to play again.`;
-        }
-    }
-    else {
-        computerSelection = getComputerChoice();
-        humanSelection = getHumanChoice();
-        playRound(humanSelection, computerSelection);
-    }
+    computerSelection = getComputerChoice();
+    humanSelection = getHumanChoice();
+    playRound(humanSelection, computerSelection);
 };
 
 function playGameByKey() {
     gameScore = Math.max(humanScore, computerScore);
 
-    if (gameScore === maxPoints || gameScore > maxPoints) {
-        if (humanScore === maxPoints || humanScore > maxPoints) {
-            para1.textContent = `Game Over!`;
-            para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
-            para3.textContent = `You Won the Game.`;
-            para4.textContent = `Click the RESTART button to play again.`
-            return;
-        }
-        else {
-            para1.textContent = `Game Over!`;
-            para2.textContent = `Computer score is ${computerScore} and you scored ${humanScore}.`;
-            para3.textContent = `You Lost the Game.`;
-            para4.textContent = `Better luck next time! Click the RESTART button to play again.`;
-            return;
-        }
-    }
-    else {
-        computerSelection = getComputerChoice();
-        humanSelection = getHumanChoiceByKey();
-        playRound(humanSelection, computerSelection);
-    }
+    // if (gameScore === maxPoints || gameScore > maxPoints) {
+    //     if (humanScore === maxPoints || humanScore > maxPoints) {
+    //         para1.textContent = `Game Over!`;
+    //         para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
+    //         para3.textContent = `You Won the Game.`;
+    //         para4.textContent = `Click the RESTART button to play again.`
+    //         return;
+    //     }
+    //     else {
+    //         para1.textContent = `Game Over!`;
+    //         para2.textContent = `Computer score is ${computerScore} and you scored ${humanScore}.`;
+    //         para3.textContent = `You Lost the Game.`;
+    //         para4.textContent = `Better luck next time! Click the RESTART button to play again.`;
+    //         return;
+    //     }
+    // }
+
+    computerSelection = getComputerChoice();
+    humanSelection = getHumanChoiceByKey();
+    playRound(humanSelection, computerSelection);
+
 };
 
 function playRound(humanChoice, computerChoice) {
@@ -125,63 +106,289 @@ function playRound(humanChoice, computerChoice) {
     if (computerChoice === humanChoice) {
         para1.textContent = `You chose ${humanChoice}.`;
         para2.textContent = `Computer chose ${computerChoice}`;
-        para3.textContent = `Round Tied.`;
+        para3.textContent = `Its a DRAW.`;
+
+        resultDiv.append(para1);
+        resultDiv.append(para2);
+        resultDiv.append(para3);
+        resultDiv.append(para4);
+        return;
     }
     else if (computerChoice === "ROCK" && humanChoice === "PAPER") {
         humanScore++;
 
-        para1.textContent = `You chose ${humanChoice}.`;
-        para2.textContent = `Computer chose ${computerChoice}`;
-        para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
-        para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+        gameScore = Math.max(humanScore, computerScore);
+        console.log(`${maxPoints + " and " + gameScore}`)
+
+        if (gameScore === (maxPoints) || gameScore > (maxPoints)) {
+            if (humanScore === maxPoints || humanScore > maxPoints) {
+                para1.textContent = `Game Over!`;
+                para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
+                para3.textContent = `You Won the Game.`;
+                para4.textContent = `Click the RESTART button to play again.`
+
+                resultDiv.append(para1);
+                resultDiv.append(para2);
+                resultDiv.append(para3);
+                resultDiv.append(para4);
+                return;
+            }
+            else {
+                para1.textContent = `Game Over!`;
+                para2.textContent = `Computer score is ${computerScore} and you scored ${humanScore}.`;
+                para3.textContent = `You Lost the Game.`;
+                para4.textContent = `Better luck next time! Click the RESTART button to play again.`;
+
+                resultDiv.append(para1);
+                resultDiv.append(para2);
+                resultDiv.append(para3);
+                resultDiv.append(para4);
+                return;
+            }
+        }
+        else if (gameScore < maxPoints) {
+            para1.textContent = `You chose ${humanChoice}.`;
+            para2.textContent = `Computer chose ${computerChoice}`;
+            para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
+            para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+            resultDiv.append(para1);
+            resultDiv.append(para2);
+            resultDiv.append(para3);
+            resultDiv.append(para4);
+            return;
+        }
 
 
     }
     else if (computerChoice === `ROCK` && humanChoice === `SCISSOR`) {
         computerScore++;
-        para1.textContent = `You chose ${humanChoice}.`;
-        para2.textContent = `Computer chose ${computerChoice}`;
-        para3.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
-        para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+        gameScore = Math.max(humanScore, computerScore);
+        console.log(`${maxPoints + " and " + gameScore}`)
+
+        if (gameScore === (maxPoints) || gameScore > (maxPoints)) {
+            if (humanScore === maxPoints || humanScore > maxPoints) {
+                para1.textContent = `Game Over!`;
+                para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
+                para3.textContent = `You Won the Game.`;
+                para4.textContent = `Click the RESTART button to play again.`
+
+                resultDiv.append(para1);
+                resultDiv.append(para2);
+                resultDiv.append(para3);
+                resultDiv.append(para4);
+                return;
+            }
+            else {
+                para1.textContent = `Game Over!`;
+                para2.textContent = `Computer score is ${computerScore} and you scored ${humanScore}.`;
+                para3.textContent = `You Lost the Game.`;
+                para4.textContent = `Better luck next time! Click the RESTART button to play again.`;
+
+                resultDiv.append(para1);
+                resultDiv.append(para2);
+                resultDiv.append(para3);
+                resultDiv.append(para4);
+                return;
+            }
+        }
+        else if (gameScore < maxPoints) {
+            para1.textContent = `You chose ${humanChoice}.`;
+            para2.textContent = `Computer chose ${computerChoice}`;
+            para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
+            para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+            resultDiv.append(para1);
+            resultDiv.append(para2);
+            resultDiv.append(para3);
+            resultDiv.append(para4);
+            return;
+        }
 
     }
     else if (computerChoice === `PAPER` && humanChoice === `ROCK`) {
         computerScore++;
-        para1.textContent = `You chose ${humanChoice}.`;
-        para2.textContent = `Computer chose ${computerChoice}`;
-        para3.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
-        para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+        gameScore = Math.max(humanScore, computerScore);
+        console.log(`${maxPoints + " and " + gameScore}`)
+
+        if (gameScore === (maxPoints) || gameScore > (maxPoints)) {
+            if (humanScore === maxPoints || humanScore > maxPoints) {
+                para1.textContent = `Game Over!`;
+                para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
+                para3.textContent = `You Won the Game.`;
+                para4.textContent = `Click the RESTART button to play again.`
+
+                resultDiv.append(para1);
+                resultDiv.append(para2);
+                resultDiv.append(para3);
+                resultDiv.append(para4);
+                return;
+            }
+            else {
+                para1.textContent = `Game Over!`;
+                para2.textContent = `Computer score is ${computerScore} and you scored ${humanScore}.`;
+                para3.textContent = `You Lost the Game.`;
+                para4.textContent = `Better luck next time! Click the RESTART button to play again.`;
+
+                resultDiv.append(para1);
+                resultDiv.append(para2);
+                resultDiv.append(para3);
+                resultDiv.append(para4);
+                return;
+            }
+        }
+        else if (gameScore < maxPoints) {
+            para1.textContent = `You chose ${humanChoice}.`;
+            para2.textContent = `Computer chose ${computerChoice}`;
+            para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
+            para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+            resultDiv.append(para1);
+            resultDiv.append(para2);
+            resultDiv.append(para3);
+            resultDiv.append(para4);
+            return;
+        }
 
     }
     else if (computerChoice === `PAPER` && humanChoice === `SCISSOR`) {
         humanScore++;
-        para1.textContent = `You chose ${humanChoice}.`;
-        para2.textContent = `Computer chose ${computerChoice}`;
-        para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
-        para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+        gameScore = Math.max(humanScore, computerScore);
+        console.log(`${maxPoints + " and " + gameScore}`)
+
+        if (gameScore === (maxPoints) || gameScore > (maxPoints)) {
+            if (humanScore === maxPoints || humanScore > maxPoints) {
+                para1.textContent = `Game Over!`;
+                para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
+                para3.textContent = `You Won the Game.`;
+                para4.textContent = `Click the RESTART button to play again.`
+
+                resultDiv.append(para1);
+                resultDiv.append(para2);
+                resultDiv.append(para3);
+                resultDiv.append(para4);
+                return;
+            }
+            else {
+                para1.textContent = `Game Over!`;
+                para2.textContent = `Computer score is ${computerScore} and you scored ${humanScore}.`;
+                para3.textContent = `You Lost the Game.`;
+                para4.textContent = `Better luck next time! Click the RESTART button to play again.`;
+
+                resultDiv.append(para1);
+                resultDiv.append(para2);
+                resultDiv.append(para3);
+                resultDiv.append(para4);
+                return;
+            }
+        }
+        else if (gameScore < maxPoints) {
+            para1.textContent = `You chose ${humanChoice}.`;
+            para2.textContent = `Computer chose ${computerChoice}`;
+            para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
+            para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+            resultDiv.append(para1);
+            resultDiv.append(para2);
+            resultDiv.append(para3);
+            resultDiv.append(para4);
+            return;
+        }
 
     }
     else if (computerChoice === `SCISSOR` && humanChoice === `ROCK`) {
         humanScore++;
-        para1.textContent = `You chose ${humanChoice}.`;
-        para2.textContent = `Computer chose ${computerChoice}`;
-        para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
-        para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+        gameScore = Math.max(humanScore, computerScore);
+        console.log(`${maxPoints + " and " + gameScore}`)
+
+        if (gameScore === (maxPoints) || gameScore > (maxPoints)) {
+            if (humanScore === maxPoints || humanScore > maxPoints) {
+                para1.textContent = `Game Over!`;
+                para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
+                para3.textContent = `You Won the Game.`;
+                para4.textContent = `Click the RESTART button to play again.`
+
+                resultDiv.append(para1);
+                resultDiv.append(para2);
+                resultDiv.append(para3);
+                resultDiv.append(para4);
+                return;
+            }
+            else {
+                para1.textContent = `Game Over!`;
+                para2.textContent = `Computer score is ${computerScore} and you scored ${humanScore}.`;
+                para3.textContent = `You Lost the Game.`;
+                para4.textContent = `Better luck next time! Click the RESTART button to play again.`;
+
+                resultDiv.append(para1);
+                resultDiv.append(para2);
+                resultDiv.append(para3);
+                resultDiv.append(para4);
+                return;
+            }
+        }
+        else if (gameScore < maxPoints) {
+            para1.textContent = `You chose ${humanChoice}.`;
+            para2.textContent = `Computer chose ${computerChoice}`;
+            para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
+            para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+            resultDiv.append(para1);
+            resultDiv.append(para2);
+            resultDiv.append(para3);
+            resultDiv.append(para4);
+            return;
+        }
 
     }
     else if (computerChoice === `SCISSOR` && humanChoice === `PAPER`) {
         computerScore++;
-        para1.textContent = `You chose ${humanChoice}.`;
-        para2.textContent = `Computer chose ${computerChoice}`;
-        para3.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
-        para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
 
+        gameScore = Math.max(humanScore, computerScore);
+        console.log(`${maxPoints + " and " + gameScore}`)
+
+        if (gameScore === (maxPoints) || gameScore > (maxPoints)) {
+            if (humanScore === maxPoints || humanScore > maxPoints) {
+                para1.textContent = `Game Over!`;
+                para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
+                para3.textContent = `You Won the Game.`;
+                para4.textContent = `Click the RESTART button to play again.`
+
+                resultDiv.append(para1);
+                resultDiv.append(para2);
+                resultDiv.append(para3);
+                resultDiv.append(para4);
+                return;
+            }
+            else {
+                para1.textContent = `Game Over!`;
+                para2.textContent = `Computer score is ${computerScore} and you scored ${humanScore}.`;
+                para3.textContent = `You Lost the Game.`;
+                para4.textContent = `Better luck next time! Click the RESTART button to play again.`;
+
+                resultDiv.append(para1);
+                resultDiv.append(para2);
+                resultDiv.append(para3);
+                resultDiv.append(para4);
+                return;
+            }
+        } else if (gameScore < maxPoints) {
+            para1.textContent = `You chose ${humanChoice}.`;
+            para2.textContent = `Computer chose ${computerChoice}`;
+            para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
+            para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
+
+            resultDiv.append(para1);
+            resultDiv.append(para2);
+            resultDiv.append(para3);
+            resultDiv.append(para4);
+            return;
+        }
     }
-    resultDiv.append(para1);
-    resultDiv.append(para2);
-    resultDiv.append(para3);
-    resultDiv.append(para4);
-
 
 };
 
@@ -229,7 +436,8 @@ startButton.addEventListener("click", () => {
     currentRound.appendChild(restartButton);
     currentRound.appendChild(resultDiv);
     resultDiv.appendChild(newPara);
-    maxPoints = tempPoints.value;
+    let temp = tempPoints.value;
+    maxPoints = parseInt(temp);
 });
 
 // - [ ]  show text in selection section “ click on images below or press R for rock,, P for paper, or S for scissor, to throw your choice”
@@ -240,7 +448,35 @@ const playerChoice = document.querySelector(".choice-section-p");
 
 playerChoice.addEventListener("click", (event) => {
     let target = event.target;
-    playGame();
+    gameScore = Math.max(humanScore, computerScore);
+
+    if (gameScore === (maxPoints) || gameScore > (maxPoints)) {
+        if (humanScore === maxPoints || humanScore > maxPoints) {
+            para1.textContent = `Game Over!`;
+            para2.textContent = `Your score is ${humanScore} and computer scored only ${computerScore}.`;
+            para3.textContent = `You Won the Game.`;
+            para4.textContent = `Click the RESTART button to play again.`
+
+            resultDiv.append(para1);
+            resultDiv.append(para2);
+            resultDiv.append(para3);
+            resultDiv.append(para4);
+            return;
+        }
+        else {
+            para1.textContent = `Game Over!`;
+            para2.textContent = `Computer score is ${computerScore} and you scored ${humanScore}.`;
+            para3.textContent = `You Lost the Game.`;
+            para4.textContent = `Better luck next time! Click the RESTART button to play again.`;
+
+            resultDiv.append(para1);
+            resultDiv.append(para2);
+            resultDiv.append(para3);
+            resultDiv.append(para4);
+            return;
+        }
+    }
+    else { playGame(); }
 });
 
 // - [ ]  create function for key pressed.
