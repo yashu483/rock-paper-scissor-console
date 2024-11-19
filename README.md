@@ -1,8 +1,8 @@
 # Rock Paper Scissor
-==Ok what about this==
-<h1>Rock Paper Scissor</h1>
-Simple JS project r-p-s
-Project Name -- rock paper scissor console only
+
+## Project Name "ROCK - PAPER - SCISSOR"
+
+<p style="background-color : red">something that should be red though</p>
 
 This simple game website is created for completion of a project after gaining basic knowledge of JavaSript. We had to put only prompt box for user interface and show result in Console panel, which I did. I also provided little introduction for how to play this game on this website. Requirements of Project is completed, hence no need to improve UI anyfurther.
 
