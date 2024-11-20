@@ -44,7 +44,6 @@ body {
     height: max-content;
     font-family: "Balthazhar", "Sour Gummy", "Rubik Bubbles", serif;
     font-weight: 200;
-    font-size: 20px;
     margin-top: none;
     padding-bottom: 30px;
 }
@@ -58,6 +57,7 @@ body {
 }
 
 #tag-war {
+    font-size: 20px;
     color: white;
     margin: 5px;
     width: max-content;
