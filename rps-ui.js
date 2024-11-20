@@ -173,7 +173,7 @@ function playRound(humanChoice, computerChoice) {
         else if (gameScore < maxPoints) {
             para1.textContent = `You chose ${humanChoice}.`;
             para2.textContent = `Computer chose ${computerChoice}`;
-            para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
+            para3.textContent = `You Lose. ${computerChoice} beats ${humanChoice}`;
             para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
 
             resultDiv.append(para1);
@@ -219,7 +219,7 @@ function playRound(humanChoice, computerChoice) {
         else if (gameScore < maxPoints) {
             para1.textContent = `You chose ${humanChoice}.`;
             para2.textContent = `Computer chose ${computerChoice}`;
-            para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
+            para3.textContent = `You Lose. ${computerChoice} beats ${humanChoice}`;
             para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
 
             resultDiv.append(para1);
@@ -356,7 +356,7 @@ function playRound(humanChoice, computerChoice) {
         } else if (gameScore < maxPoints) {
             para1.textContent = `You chose ${humanChoice}.`;
             para2.textContent = `Computer chose ${computerChoice}`;
-            para3.textContent = `Congrats! You win. ${humanChoice} beats ${computerChoice}`;
+            para3.textContent = `You Lose. ${computerChoice} beats ${humanChoice}`;
             para4.textContent = `Now your score is ${humanScore} and computer score is ${computerScore}`;
 
             resultDiv.append(para1);
